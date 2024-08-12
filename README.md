@@ -23,3 +23,9 @@ A simple console-based Python application for managing employee registrations at
 2. Navigate to the project directory:
    ```bash
    cd employee-registration-system
+
+## Usage
+
+To run the program, execute the following command in your terminal:
+   ```bash
+   python employee_registration.py
