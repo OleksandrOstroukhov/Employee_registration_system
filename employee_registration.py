@@ -1,9 +1,9 @@
 import json
 
-# Файл для хранения данных сотрудников
+# File for storing employee data
 DATA_FILE = "employees.json"
 
-# Загрузка данных из файла
+# Load data from file
 def load_data():
     try:
         with open(DATA_FILE, 'r') as file:
@@ -11,46 +11,46 @@ def load_data():
     except FileNotFoundError:
         return {}
 
-# Сохранение данных в файл
+# Save data to file
 def save_data(data):
     with open(DATA_FILE, 'w') as file:
         json.dump(data, file, indent=4)
 
-# Регистрация нового сотрудника
+# Register a new employee
 def register_employee(employees):
-    employee_id = input("Введите ID сотрудника: ")
+    employee_id = input("Enter employee ID: ")
     if employee_id in employees:
-        print("Сотрудник с таким ID уже зарегистрирован.")
+        print("An employee with this ID is already registered.")
         return
 
-    name = input("Введите имя сотрудника: ")
-    position = input("Введите должность сотрудника: ")
+    name = input("Enter employee name: ")
+    position = input("Enter employee position: ")
 
     employees[employee_id] = {
         "name": name,
         "position": position
     }
     save_data(employees)
-    print(f"Сотрудник {name} успешно зарегистрирован.")
+    print(f"Employee {name} has been successfully registered.")
 
-# Просмотр всех зарегистрированных сотрудников
+# View all registered employees
 def view_employees(employees):
     if not employees:
-        print("Нет зарегистрированных сотрудников.")
+        print("No employees registered.")
         return
 
     for employee_id, details in employees.items():
-        print(f"ID: {employee_id}, Имя: {details['name']}, Должность: {details['position']}")
+        print(f"ID: {employee_id}, Name: {details['name']}, Position: {details['position']}")
 
-# Обновление информации о сотруднике
+# Update employee information
 def update_employee(employees):
-    employee_id = input("Введите ID сотрудника, которого нужно обновить: ")
+    employee_id = input("Enter the ID of the employee you want to update: ")
     if employee_id not in employees:
-        print("Сотрудник с таким ID не найден.")
+        print("Employee with this ID not found.")
         return
 
-    name = input("Введите новое имя сотрудника (оставьте пустым, чтобы не изменять): ")
-    position = input("Введите новую должность сотрудника (оставьте пустым, чтобы не изменять): ")
+    name = input("Enter new employee name (leave blank to keep current): ")
+    position = input("Enter new employee position (leave blank to keep current): ")
 
     if name:
         employees[employee_id]['name'] = name
@@ -58,32 +58,32 @@ def update_employee(employees):
         employees[employee_id]['position'] = position
 
     save_data(employees)
-    print(f"Информация о сотруднике {employee_id} обновлена.")
+    print(f"Employee information for ID {employee_id} has been updated.")
 
-# Удаление сотрудника
+# Delete an employee
 def delete_employee(employees):
-    employee_id = input("Введите ID сотрудника, которого нужно удалить: ")
+    employee_id = input("Enter the ID of the employee you want to delete: ")
     if employee_id not in employees:
-        print("Сотрудник с таким ID не найден.")
+        print("Employee with this ID not found.")
         return
 
     del employees[employee_id]
     save_data(employees)
-    print(f"Сотрудник {employee_id} успешно удален.")
+    print(f"Employee {employee_id} has been successfully deleted.")
 
-# Главное меню программы
+# Main menu of the program
 def main():
     employees = load_data()
 
     while True:
-        print("\n--- Система регистрации сотрудников ---")
-        print("1. Зарегистрировать нового сотрудника")
-        print("2. Просмотреть всех сотрудников")
-        print("3. Обновить информацию о сотруднике")
-        print("4. Удалить сотрудника")
-        print("5. Выход")
+        print("\n--- Employee Registration System ---")
+        print("1. Register a new employee")
+        print("2. View all employees")
+        print("3. Update employee information")
+        print("4. Delete an employee")
+        print("5. Exit")
 
-        choice = input("Выберите действие: ")
+        choice = input("Choose an option: ")
 
         if choice == '1':
             register_employee(employees)
@@ -96,7 +96,7 @@ def main():
         elif choice == '5':
             break
         else:
-            print("Неверный выбор. Попробуйте снова.")
+            print("Invalid choice. Please try again.")
 
 if __name__ == "__main__":
     main()
