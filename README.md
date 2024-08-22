@@ -1,6 +1,3 @@
-Конечно! Вот текст в виде одного файла, который можно вставить в `README.md`:
-
-```markdown
 # Employee Registration System
 
 A simple console-based Python application for managing employee registrations at a workplace. This program allows you to register new employees, view the list of registered employees, update their information, and delete employee records.
